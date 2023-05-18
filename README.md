@@ -174,9 +174,15 @@ iam.attach_role_policy(
 
 c. Create a new Lambda function using the above role
 
+Created a lambda function in which, written a python script in such a way that it generates json in given format and saves that file in the specified bucket.
+
 <img width="1325" alt="Screenshot 2023-05-17 at 6 20 32 PM" src="https://github.com/Rajkeshav12/AWS_Assignment/assets/123532501/17a02e2f-2b3f-4bf1-82ea-dba8201ca665">
 
 d. Schedule the job to run every minute. Stop execution after 3 runs
+
+Written a cloudwatch rule, in such a way that it runs only once per minute and had attached this rule to the written lambda function.
+
+To stop exection after three runs I initilized a counter variable in which we increases upon after every execution and once the count reaches three, the executions stops by setting its concurrency to 0. The below is the lamba fuction which does the above said things.
 
 ```
 import boto3
@@ -260,6 +266,9 @@ e. Check if cloud watch logs are generated.
 
 ### API gateway - Lambda integration
 
+a. Modify lambda function to accept parameters
+
+The below is the fucntion which after modification accepts the parameters and returns the succes meesage and filename.
 
 ```
 import boto3
@@ -300,7 +309,7 @@ def lambda_handler(event, context):
   b. Create a POST API from API Gateway, pass parameters as request body to Lambda job. Return the filename and status code as a response.
 To create a post API to feed to lambda job these steps were followed
 
-Steps-
+### Steps-
 
 1. Open the API Gateway console and locate the "Create API" button. Click on it.
 2. From the available options, choose "REST API" and proceed by clicking "Build".
